@@ -7,21 +7,12 @@ const Login = () => {
   const [signingIn, setSigningIn] = useState(false);
   const [localError, setLocalError] = useState(null);
 
-  const handleLogin = async () => {
+  const handleLogin = () => {
     if (signingIn) return;
     setSigningIn(true);
     setLocalError(null);
-    try {
-      await login();
-      // Redirect is handled automatically by onAuthStateChanged → setUser → AppRoutes
-    } catch (err) {
-      // Only set error for non-popup-closed errors
-      if (err.code !== 'auth/popup-closed-by-user' && err.code !== 'auth/cancelled-popup-request') {
-        setLocalError('Sign-in failed. Please try again.');
-      }
-    } finally {
-      setSigningIn(false);
-    }
+    // signInWithRedirect navigates away from the page — no await needed
+    login();
   };
 
   const displayError = localError || authError;

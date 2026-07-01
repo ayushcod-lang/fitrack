@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { auth, signInWithGoogle, logOut } from '../firebase';
+import { auth, signInWithGoogle, logOut, getGoogleRedirectResult } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import api from '../api';
 
@@ -17,6 +17,24 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [authError, setAuthError] = useState(null);
+
+  // Handle redirect result when user returns from Google sign-in
+  useEffect(() => {
+    getGoogleRedirectResult()
+      .then(async (result) => {
+        if (result?.user) {
+          // User just returned from Google redirect — onAuthStateChanged will fire too,
+          // but we log here for visibility
+          console.log('Redirect sign-in successful');
+        }
+      })
+      .catch((err) => {
+        if (err.code !== 'auth/popup-closed-by-user') {
+          console.error('Redirect result error:', err.message);
+          setAuthError('Sign-in failed. Please try again.');
+        }
+      });
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -47,17 +65,10 @@ export const AuthProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
-  const login = async () => {
+  const login = () => {
     setAuthError(null);
-    try {
-      await signInWithGoogle();
-      // onAuthStateChanged handles everything after this —
-      // do NOT setUser here, that creates a race condition
-    } catch (err) {
-      console.error('Login failed:', err.message);
-      setAuthError('Google sign-in was cancelled or failed.');
-      throw err;
-    }
+    // signInWithRedirect navigates away — no return value to await
+    signInWithGoogle();
   };
 
   const logout = async () => {
