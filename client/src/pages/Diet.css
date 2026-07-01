@@ -1,0 +1,37 @@
+.diet-top { margin-bottom: 16px; }
+.diet-input-card { margin-bottom: 16px; }
+.diet-textarea { resize: vertical; min-height: 80px; margin-bottom: 10px; line-height: 1.5; }
+.diet-analyze-btn { width: 100%; padding: 12px; font-size: 14px; }
+.diet-result-card { margin-bottom: 16px; animation: slideUp 0.3s ease; border-color: rgba(16, 185, 129, 0.2); }
+.result-totals { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
+.result-total-item { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 10px 6px; background: rgba(255,255,255,0.03); border-radius: var(--radius-md); border: 1px solid var(--border); }
+.result-total-value { font-size: 20px; font-weight: 600; }
+.result-total-value.calories { color: var(--accent); }
+.result-total-value.protein { color: var(--protein); }
+.result-total-value.carbs { color: var(--carbs); }
+.result-total-value.fats { color: var(--fats); }
+.result-total-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.result-items { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.result-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: rgba(255,255,255,0.03); border-radius: var(--radius-sm); }
+.result-item-name { flex: 1; font-size: 13px; font-weight: 500; text-transform: capitalize; }
+.result-item-cal { font-size: 13px; font-weight: 500; color: var(--text-secondary); }
+.result-item-macro { font-size: 11px; color: var(--text-muted); }
+.result-actions { display: flex; gap: 10px; }
+.result-actions .btn-primary { flex: 1; }
+.diet-summary-card { margin-bottom: 20px; }
+.diet-summary-stats { display: flex; flex-direction: column; gap: 10px; }
+.diet-summary-stat { display: flex; flex-direction: column; }
+.diet-stat-value { font-size: 24px; font-weight: 600; color: var(--text-primary); }
+.diet-stat-label { font-size: 12px; color: var(--text-muted); }
+.diet-summary-macros { display: flex; gap: 8px; }
+.macro-pill { padding: 5px 12px; border-radius: var(--radius-full); font-size: 12px; font-weight: 500; }
+.macro-pill.protein { background: rgba(59, 130, 246, 0.1); color: var(--protein); }
+.macro-pill.carbs { background: rgba(245, 158, 11, 0.1); color: var(--carbs); }
+.macro-pill.fats { background: rgba(139, 92, 246, 0.1); color: var(--fats); }
+.diet-log { margin-bottom: 16px; }
+.diet-entries { display: flex; flex-direction: column; gap: 10px; }
+.diet-entry { padding: 12px 14px; }
+.diet-entry-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+.diet-entry-text { font-size: 13px; font-weight: 500; line-height: 1.4; text-transform: capitalize; }
+.diet-entry-macros { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+@media (max-width: 480px) { .result-totals { grid-template-columns: repeat(2, 1fr); } }

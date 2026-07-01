@@ -1,0 +1,59 @@
+.workout-top-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.date-input { max-width: 180px; color-scheme: dark; }
+.workout-stats-bar { display: flex; gap: 8px; align-items: center; }
+.calories-burned-row { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 10px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); }
+.calories-burned-row label { font-size: 13px; font-weight: 500; white-space: nowrap; }
+.exercise-cards { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+.exercise-card { animation: fadeIn 0.2s ease; }
+.exercise-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+.exercise-card-info { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.exercise-card-name { font-size: 15px; font-weight: 600; }
+.exercise-pr { animation: prCelebrate 0.5s ease; }
+.sets-table { margin-bottom: 8px; }
+.sets-header { display: grid; grid-template-columns: 40px 1fr 1fr 80px 40px; gap: 8px; padding: 0 4px 8px; font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500; }
+.set-row { display: grid; grid-template-columns: 40px 1fr 1fr 80px 40px; gap: 8px; align-items: center; padding: 3px 4px; border-radius: var(--radius-sm); transition: background 0.1s ease; }
+.set-row:hover { background: rgba(255,255,255,0.03); }
+.set-number { font-size: 12px; font-weight: 500; color: var(--text-muted); text-align: center; }
+.set-input { padding: 7px 10px; text-align: center; font-size: 14px; font-weight: 500; }
+.set-volume { font-size: 12px; color: var(--text-muted); text-align: center; font-weight: 500; }
+.set-remove { width: 28px; height: 28px; font-size: 16px; color: var(--text-muted); }
+.set-remove:hover { color: var(--accent-warn); }
+.add-set-btn { width: 100%; font-size: 13px; }
+.add-exercise-btn { width: 100%; padding: 14px; font-size: 14px; }
+.add-exercise-panel { animation: slideUp 0.2s ease; }
+.add-exercise-panel h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+.exercise-suggestions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.exercise-suggestion { padding: 6px 12px; font-size: 12px; }
+.pr-alert { position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; align-items: center; gap: 8px; padding: 12px 18px; background: var(--bg-card); border: 1px solid var(--accent); color: var(--text-primary); font-weight: 600; font-size: 14px; border-radius: var(--radius-md); animation: slideUp 0.3s ease; }
+.pr-alert-icon { font-size: 20px; }
+
+/* Session Button */
+.session-start-btn {
+  width: 100%; display: flex; align-items: center; gap: 14px;
+  padding: 14px 20px; margin-bottom: 20px;
+  background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); cursor: pointer;
+  transition: border-color 0.15s ease; text-align: left;
+}
+.session-start-btn:hover { border-color: var(--border-active); }
+.session-start-icon { font-size: 26px; flex-shrink: 0; }
+.session-start-text { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.session-start-text strong { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+.session-start-text small { font-size: 12px; color: var(--text-muted); font-weight: 400; }
+.session-start-arrow { font-size: 18px; color: var(--text-muted); flex-shrink: 0; }
+
+/* Workout Tabs */
+.workout-tabs {
+  display: flex; gap: 2px; padding: 3px;
+  background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+  border-radius: var(--radius-md); margin-bottom: 16px;
+}
+.workout-tab {
+  flex: 1; padding: 8px 14px; font-size: 13px; font-weight: 500;
+  color: var(--text-muted); background: transparent; border: none;
+  border-radius: var(--radius-sm); cursor: pointer; transition: all 0.15s ease;
+}
+.workout-tab:hover { color: var(--text-secondary); }
+.workout-tab.active { color: var(--text-primary); background: var(--bg-card); }
+
+@media (max-width: 768px) { .sets-header, .set-row { grid-template-columns: 30px 1fr 1fr 60px 30px; } .set-input { padding: 5px 6px; font-size: 13px; } }

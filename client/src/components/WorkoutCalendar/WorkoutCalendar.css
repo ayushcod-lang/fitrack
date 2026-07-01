@@ -1,0 +1,218 @@
+/* ========================================================
+   Workout Calendar — Heatmap + Day Detail View
+   ======================================================== */
+
+.workout-calendar {
+  margin-bottom: 24px;
+  animation: fadeIn 0.4s ease;
+}
+
+/* Header */
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.cal-month-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.cal-nav-btn {
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+}
+
+/* Day labels */
+.cal-day-labels {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.cal-day-label {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Calendar grid */
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.cal-cell {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  cursor: default;
+  position: relative;
+  transition: all 0.2s ease;
+  background: var(--bg-glass);
+  border: 1px solid transparent;
+}
+
+.cal-cell-empty {
+  background: transparent;
+}
+
+.cal-cell-day {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.cal-cell-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 2px;
+  position: absolute;
+  bottom: 4px;
+}
+
+/* Intensity levels (GitHub-style heatmap) */
+.cal-cell-active {
+  cursor: pointer;
+}
+
+.cal-cell-active:hover {
+  transform: scale(1.1);
+  z-index: 2;
+}
+
+.cal-cell-active .cal-cell-day {
+  color: var(--text-primary);
+}
+
+.intensity-1 {
+  background: rgba(0, 255, 135, 0.1);
+}
+
+.intensity-2 {
+  background: rgba(0, 255, 135, 0.2);
+}
+
+.intensity-3 {
+  background: rgba(0, 255, 135, 0.35);
+}
+
+.intensity-4 {
+  background: rgba(0, 255, 135, 0.5);
+}
+
+.intensity-4 .cal-cell-day {
+  color: #0A0F1E;
+  font-weight: 800;
+}
+
+/* Today indicator */
+.cal-cell-today {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+/* Selected cell */
+.cal-cell-selected {
+  border-color: var(--accent-secondary);
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.3);
+}
+
+/* Legend */
+.cal-legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.cal-legend-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin: 0 4px;
+}
+
+.cal-legend-box {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: var(--bg-glass);
+}
+
+/* Day detail panel */
+.cal-detail {
+  margin-top: 16px;
+  animation: slideUp 0.3s ease;
+}
+
+.cal-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.cal-detail-header h4 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.cal-detail-stats {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+
+.cal-detail-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.cal-detail-value {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.cal-detail-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.cal-detail-exercises {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cal-cell-day {
+    font-size: 11px;
+  }
+
+  .cal-detail-stats {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}

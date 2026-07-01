@@ -1,0 +1,7 @@
+# Vercel deployment artifacts
+.vercel/
+
+# Environment Variables  (NEVER commit secrets)
+.env
+.env.*
+!.env.example

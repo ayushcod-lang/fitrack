@@ -1,0 +1,44 @@
+/* Smart Insights — Compact Professional Widget */
+
+.smart-insights-card { animation: fadeIn 0.3s ease; }
+
+.smart-insights-header {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
+}
+
+.smart-insights-title-row { display: flex; align-items: center; gap: 6px; }
+.smart-insights-title-row .card-title { margin-bottom: 0; font-size: 14px; }
+
+.smart-insights-badge {
+  font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.4px;
+  padding: 2px 6px; border-radius: 12px;
+  background: rgba(16, 185, 129, 0.08); color: var(--accent); border: 1px solid rgba(16, 185, 129, 0.12);
+}
+
+.smart-insights-refresh { font-size: 13px; padding: 3px !important; min-width: auto !important; }
+
+.smart-insights-loading {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 20px 0; color: var(--text-muted); font-size: 12px;
+}
+
+.smart-insights-grid { display: flex; flex-direction: column; gap: 6px; }
+
+.smart-insight-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 8px 10px; border-radius: var(--radius-sm);
+  border: 1px solid; animation: insightFadeIn 0.2s ease backwards;
+}
+.smart-insight-item:nth-child(1) { animation-delay: 0.05s; }
+.smart-insight-item:nth-child(2) { animation-delay: 0.1s; }
+.smart-insight-item:nth-child(3) { animation-delay: 0.15s; }
+.smart-insight-item:nth-child(4) { animation-delay: 0.2s; }
+
+@keyframes insightFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.smart-insight-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.smart-insight-content { flex: 1; min-width: 0; }
+.smart-insight-title { font-size: 11px; font-weight: 600; margin: 0 0 1px 0; }
+.smart-insight-text { font-size: 11px; color: var(--text-muted); margin: 0; line-height: 1.4; }
+.smart-insights-error { font-size: 11px; color: var(--accent-warn); text-align: center; margin-top: 4px; }
+.smart-insights-timestamp { font-size: 10px; color: var(--text-muted); text-align: right; margin-top: 6px; margin-bottom: 0; opacity: 0.5; }

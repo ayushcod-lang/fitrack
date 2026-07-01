@@ -1,0 +1,306 @@
+/* ========================================================
+   WorkoutSession — Active session UI styles
+   ======================================================== */
+
+.workout-session {
+  padding-bottom: 100px; /* space for bottom bar */
+  animation: fadeIn 0.4s ease;
+}
+
+/* ---- Session Header ---- */
+.session-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(20px);
+}
+
+.session-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.session-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(255, 107, 107, 0.15);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: var(--radius-full);
+  color: var(--accent-warn);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.session-live-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-warn);
+  border-radius: 50%;
+  animation: live-pulse 1.5s ease infinite;
+}
+
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.session-timer {
+  font-size: 24px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(135deg, var(--text-primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.session-header-right {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ---- Exercise Cards ---- */
+.session-exercises {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.session-exercise-card {
+  animation: fadeIn 0.3s ease;
+}
+
+.session-ex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.session-ex-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.session-ex-name {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.tag-ai {
+  background: rgba(167, 139, 250, 0.15);
+  color: var(--accent-purple);
+  font-size: 10px;
+  padding: 3px 10px;
+}
+
+/* ---- Sets Table ---- */
+.session-sets {
+  margin-bottom: 8px;
+}
+
+.session-sets-header {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 120px 40px;
+  gap: 8px;
+  padding: 0 4px 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.session-set-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 120px 40px;
+  gap: 8px;
+  align-items: center;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease;
+}
+
+.session-set-row:hover {
+  background: var(--bg-glass);
+}
+
+/* Tracking buttons */
+.session-tracking-btns {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-auto-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-purple);
+  background: rgba(167, 139, 250, 0.12);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-auto-track:hover {
+  background: rgba(167, 139, 250, 0.25);
+  border-color: var(--accent-purple);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(167, 139, 250, 0.2);
+}
+
+.session-manual-tag {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.session-form-badge {
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+}
+
+.badge-good { background: rgba(0, 255, 135, 0.15); color: var(--accent); }
+.badge-ok { background: rgba(255, 167, 38, 0.15); color: var(--accent-orange); }
+.badge-bad { background: rgba(255, 107, 107, 0.15); color: var(--accent-warn); }
+
+.session-set-actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* ---- Add Exercise ---- */
+.session-add-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 15px;
+  margin-bottom: 16px;
+  border-style: dashed;
+  border-width: 2px;
+}
+
+.session-add-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.session-add-panel {
+  animation: slideUp 0.3s ease;
+  margin-bottom: 16px;
+}
+
+.session-add-panel h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.session-exercise-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.ai-supported {
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+.ai-supported:hover {
+  border-color: var(--accent-purple);
+  color: var(--accent-purple);
+}
+
+.ai-dot {
+  font-size: 12px;
+}
+
+/* ---- Empty state ---- */
+.session-empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-muted);
+}
+
+.session-empty p {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.session-empty-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ---- Bottom bar ---- */
+.session-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: rgba(10, 15, 30, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-glass);
+  z-index: 100;
+}
+
+.session-save-btn {
+  min-width: 200px;
+  font-size: 15px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .session-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .session-sets-header,
+  .session-set-row {
+    grid-template-columns: 30px 1fr 1fr 90px 30px;
+    gap: 6px;
+  }
+
+  .session-timer {
+    font-size: 20px;
+  }
+
+  .session-bottom-bar {
+    padding: 12px 16px;
+  }
+
+  .session-save-btn {
+    min-width: 160px;
+    font-size: 13px;
+  }
+}
