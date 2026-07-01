@@ -40,21 +40,33 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       setAuthError(null);
       if (firebaseUser) {
-        try {
-          // Always get a fresh token — Firebase auto-refreshes it
-          const idToken = await firebaseUser.getIdToken(true);
-          const { data } = await api.post('/api/auth/google', { idToken });
-          localStorage.setItem('fitnex_token', data.token);
-          localStorage.setItem('fitnex_user', JSON.stringify(data.user));
-          setUser(data.user);
-        } catch (err) {
-          console.error('Backend auth failed:', err.message);
-          // Clear everything on backend failure — don't leave stale state
-          localStorage.removeItem('fitnex_token');
-          localStorage.removeItem('fitnex_user');
-          setUser(null);
-          setAuthError('Sign-in failed. Please try again.');
-        }
+        // Render free tier can take 30-50s to wake up — retry once with long timeout
+        const attemptBackendAuth = async (attempt = 1) => {
+          try {
+            console.log(`Backend auth attempt ${attempt}...`);
+            const idToken = await firebaseUser.getIdToken(true);
+            const { data } = await api.post('/api/auth/google', { idToken }, {
+              timeout: 60000, // 60s timeout to survive Render cold start
+            });
+            localStorage.setItem('fitnex_token', data.token);
+            localStorage.setItem('fitnex_user', JSON.stringify(data.user));
+            setUser(data.user);
+            console.log('Backend auth success');
+          } catch (err) {
+            console.error(`Backend auth attempt ${attempt} failed:`, err.message, err.response?.status, err.response?.data);
+            if (attempt < 2) {
+              console.log('Retrying backend auth in 3s...');
+              await new Promise(r => setTimeout(r, 3000));
+              return attemptBackendAuth(attempt + 1);
+            }
+            // All attempts failed — clear state
+            localStorage.removeItem('fitnex_token');
+            localStorage.removeItem('fitnex_user');
+            setUser(null);
+            setAuthError('Sign-in failed. Please try again.');
+          }
+        };
+        await attemptBackendAuth();
       } else {
         localStorage.removeItem('fitnex_token');
         localStorage.removeItem('fitnex_user');
